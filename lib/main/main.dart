@@ -1,7 +1,11 @@
-
+// Import flutter packages.
 import 'package:flutter/material.dart';
 
+// Import project-specific files.
+import 'package:kar_kam_1/app_data/app_data.dart';
+import 'package:kar_kam_1/app_data/app_data_preference_service.dart';
 import 'package:kar_kam_1/app_data/get_it_service.dart';
+import 'package:kar_kam_1/main/kar_kam.dart';
 
 /// App start point.
 void main() {
@@ -10,23 +14,6 @@ void main() {
   GetItService.register<AppData>(AppDataPreferenceService());
 
   // Run the app.
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Kar Kam',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Placeholder(),
-    );
-  }
+  runApp(const KarKam());
 }
 

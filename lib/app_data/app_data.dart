@@ -1,10 +1,9 @@
-
+// Import flutter packages.
 import 'package:flutter/material.dart';
 
 /// Stores app data.
 abstract class AppData extends ChangeNotifier {
+  String? test;
 
-
-  /// The available screen dimensions.
-  Rect? basePageViewRect;
+  void initialise();
 }
