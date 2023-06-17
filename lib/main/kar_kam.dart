@@ -1,4 +1,4 @@
-//  Import flutter packages.
+//  Import external packages.
 import 'package:flutter/material.dart';
 
 // Import project-specific files.
