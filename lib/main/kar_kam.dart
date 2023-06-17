@@ -8,7 +8,6 @@ import 'package:kar_kam_1/app_data/get_it_service.dart';
 class KarKam extends StatelessWidget {
   const KarKam({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     print('test = ${GetItService.instance<AppData>().test}');

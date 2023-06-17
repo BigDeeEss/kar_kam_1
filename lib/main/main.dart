@@ -12,7 +12,7 @@ void main() {
   // Use [GetItService] as the single point of access to [GetIt] and
   // register an instance of [AppDataPreferenceService].
   //
-  // The constructor for [AppDataPreferenceService] loads prreferences from
+  // The constructor for [AppDataPreferenceService] loads preferences from
   // file and/or apply defaults.
   GetItService.register<AppData>(AppDataPreferenceService());
 
