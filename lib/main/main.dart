@@ -17,6 +17,5 @@ void main() {
   GetItService.register<AppData>(AppDataPreferenceService());
 
   // Run the app.
-  runApp(const KarKam());
+  runApp(KarKam());
 }
-
