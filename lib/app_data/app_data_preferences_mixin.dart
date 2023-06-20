@@ -11,12 +11,11 @@ mixin AppDataPreferencesMixin on AppData {
     // for retrieving stored data.
     userPrefs ?? await SharedPreferences.getInstance();
 
-    // Load data.
+    // Get user preference from file and upload to [AppData].
     update(string: string, value: userPrefs?.getString(string));
   }
 
-  /// Loads all user preferences from file.
-  // @override
+  /// Gets all user preferences from file.
   Future<void> getPrefs() async {
     // Get an instance of [SharedPreferences] for retrieving stored data.
     final SharedPreferences userPrefs = await SharedPreferences.getInstance();
@@ -47,7 +46,7 @@ mixin AppDataPreferencesMixin on AppData {
     // Load data using [getPref] and providing [userPrefs] for speed.
     setPref(
       'test',
-      'AppDataPreferencesMixin, setPrefs',
+      test,
       userPrefs,
     );
   }

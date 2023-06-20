@@ -21,12 +21,9 @@ mixin AppDataManagerMixin on AppData {
     }
   }
 
-  /// Sets [AppData] field values to defaults if null.
-  ///
-  /// [force] overrides existing values.
-  // @override
+  /// Sets [AppData] field values to defaults.
   void setDefaults() {
-    // Set test.
+    // [AppData.test].
     update(
       string: 'test',
       value: 'test default value.',
