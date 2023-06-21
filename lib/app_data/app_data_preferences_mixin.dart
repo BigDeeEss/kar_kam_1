@@ -8,11 +8,30 @@ mixin AppDataPreferencesMixin on AppData {
   /// Loads a user preference from file.
   Future<void> getPref(String string, SharedPreferences? userPrefs) async {
     // If [userPrefs] is null then get an instance of [SharedPreferences]
-    // for retrieving stored data.
+    // in order to retrieve stored data.
     userPrefs ?? await SharedPreferences.getInstance();
 
     // Get user preference from file and upload to [AppData].
-    update(string: string, value: userPrefs?.getString(string));
+    try {
+      // Attempt to get bool from file.
+      update(string: string, value: userPrefs?.getBool(string));
+      return;
+    } catch (e) {}
+    try {
+      // Attempt to get double from file.
+      update(string: string, value: userPrefs?.getDouble(string));
+      return;
+    } catch (e) {}
+    try {
+      // Attempt to get string from file.
+      update(string: string, value: userPrefs?.getString(string));
+      return;
+    } catch (e) {}
+    try {
+      // Attempt to get a list of strings from file.
+      update(string: string, value: userPrefs?.getStringList(string));
+      return;
+    } catch (e) {}
   }
 
   /// Gets all user preferences from file.
@@ -21,21 +40,40 @@ mixin AppDataPreferencesMixin on AppData {
     final SharedPreferences userPrefs = await SharedPreferences.getInstance();
 
     // Load data using [getPref] and providing [userPrefs] for speed.
-    getPref(
-      'test',
-      userPrefs,
-    );
+    getPref('testString', userPrefs);
+    getPref('testDouble', userPrefs);
+    getPref('testInt', userPrefs);
+    getPref('testBool', userPrefs);
+    getPref('testStringList', userPrefs);
   }
 
   /// Save [AppData] field values (user preferences) to file.
   Future<void> setPref(
       String string, var value, SharedPreferences? userPrefs) async {
     // If [userPrefs] is null then get an instance of [SharedPreferences]
-    // for retrieving stored data.
+    // in order to save data.
     userPrefs ?? await SharedPreferences.getInstance();
 
-    // Load data using [getPref] and providing [userPrefs] for speed.
-    userPrefs?.setString(string, value);
+    // Get user preference to file.
+    if (value is bool) {
+      // Attempt to save bool to file.
+      userPrefs?.setBool(string, value);
+    } else if (value is int) {
+      // Attempt to save int to file.
+      userPrefs?.setInt(string, value);
+    } else if (value is double) {
+      // Attempt to save double to file.
+      userPrefs?.setDouble(string, value);
+    } else if (value is String) {
+      // Attempt to save string to file.
+      userPrefs?.setString(string, value);
+    } else if (value is List<String>) {
+      // Attempt to save a list of strings to file.
+      userPrefs?.setStringList(string, value);
+    } else {
+      // Throw a TypeError as shared_preferences only supports the above types.
+      throw TypeError();
+    }
   }
 
   /// Save [AppData] field values (user preferences) to file.
@@ -43,11 +81,11 @@ mixin AppDataPreferencesMixin on AppData {
     // Get an instance of [SharedPreferences] for retrieving stored data.
     final SharedPreferences userPrefs = await SharedPreferences.getInstance();
 
-    // Load data using [getPref] and providing [userPrefs] for speed.
-    setPref(
-      'test',
-      test,
-      userPrefs,
-    );
+    // Save data using [setPref] and providing [userPrefs] for speed.
+    setPref('testString', testString, userPrefs);
+    setPref('testDouble', testDouble, userPrefs);
+    setPref('testInt', testInt, userPrefs);
+    setPref('testBool', testBool, userPrefs);
+    setPref('testStringList', testStringList, userPrefs);
   }
 }

@@ -20,12 +20,15 @@ class AppDataPreferenceService extends AppData
   /// loads user preferences from file and sets null fields to default values.
   @override
   void initialise() async {
-    // Load user preferences from file.
-    await getPrefs();
-
     // Apply defaults to null user preferences.
+    print('testString before setDefaults, testString = $testString');
     setDefaults();
 
+    // Load user preferences from file.
+    print('testString before getPrefs, testString = $testString');
+    await getPrefs();
+
+    print('testString before setPrefs, testString = $testString');
     setPrefs();
 
     // Signal that [AppData.fields] are non-null.

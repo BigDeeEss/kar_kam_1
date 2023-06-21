@@ -4,6 +4,7 @@ import 'package:get_it_mixin/get_it_mixin.dart';
 
 // Import project-specific files.
 import 'package:kar_kam_1/app_data/app_data.dart';
+import 'package:kar_kam_1/app_data/get_it_service.dart';
 
 class KarKam extends StatelessWidget with GetItMixin{
   KarKam({super.key});
@@ -11,7 +12,13 @@ class KarKam extends StatelessWidget with GetItMixin{
   @override
   Widget build(BuildContext context) {
     // Watch for changes to [AppData.test] registered with GetIt.
-    String? test = watchOnly((AppData a) => a.test);
+    String? testString = watchOnly((AppData a) => a.testString);
+    double? testDouble = watchOnly((AppData a) => a.testDouble);
+    int? testInt = watchOnly((AppData a) => a.testInt);
+    bool? testBool = watchOnly((AppData a) => a.testBool);
+    List<String>? testStringList = watchOnly((AppData a) => a.testStringList);
+
+    GetItService.instance<AppData>().testInt = 54321;
 
     return MaterialApp(
       title: 'Kar Kam',
@@ -20,7 +27,15 @@ class KarKam extends StatelessWidget with GetItMixin{
         useMaterial3: true,
       ),
       home: Center(
-        child: Text(test!),
+        child: Column(
+          children: [
+            Text('$testString!'),
+            Text('$testDouble!'),
+            Text('$testInt!'),
+            Text('$testBool!'),
+            Text('$testStringList!'),
+          ]
+        ),
       ),
     );
   }
