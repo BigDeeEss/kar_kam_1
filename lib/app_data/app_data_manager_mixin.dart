@@ -31,7 +31,7 @@ mixin AppDataManagerMixin on AppData {
     // [AppData.test].
     update(
       string: 'testString',
-      value: 'testString default value again.',
+      value: 'testString default value again!',
     );
     update(
       string: 'testDouble',
@@ -47,7 +47,7 @@ mixin AppDataManagerMixin on AppData {
     );
     update(
       string: 'testStringList',
-      value: ['testString', 'default', 'value', 'again.'],
+      value: ['testString', 'default', 'value', 'again!'],
     );
   }
 }

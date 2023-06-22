@@ -29,11 +29,11 @@ class KarKam extends StatelessWidget with GetItMixin{
       home: Center(
         child: Column(
           children: [
-            Text('$testString!'),
+            Text('$testString'),
             Text('$testDouble!'),
             Text('$testInt!'),
             Text('$testBool!'),
-            Text('$testStringList!'),
+            Text('$testStringList'),
           ]
         ),
       ),
