@@ -16,22 +16,22 @@ mixin AppDataPreferencesMixin on AppData {
       // Attempt to get bool from file.
       update(string: string, value: userPrefs?.getBool(string));
       return;
-    } catch (e) {}
+    } catch (_) {}
     try {
       // Attempt to get double from file.
       update(string: string, value: userPrefs?.getDouble(string));
       return;
-    } catch (e) {}
+    } catch (_) {}
     try {
       // Attempt to get string from file.
       update(string: string, value: userPrefs?.getString(string));
       return;
-    } catch (e) {}
+    } catch (_) {}
     try {
       // Attempt to get a list of strings from file.
       update(string: string, value: userPrefs?.getStringList(string));
       return;
-    } catch (e) {}
+    } catch (_) {}
   }
 
   /// Gets all user preferences from file.
