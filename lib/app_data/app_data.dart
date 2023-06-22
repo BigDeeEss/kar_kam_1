@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 
 /// Stores app data.
 abstract class AppData extends ChangeNotifier {
-  String? test;
+  String? testString;
+  double? testDouble;
+  int? testInt;
+  bool? testBool;
+  List<String>? testStringList;
 
   /// A map that relates a string representation of field to the corresponding
   /// getter. So, for instance, 'test' to 'AppData.test'.
@@ -16,11 +20,19 @@ abstract class AppData extends ChangeNotifier {
   /// Initialises [getMap] and [setMap].
   void initialise() {
     getMap = {
-      'test': test,
+      'testString': testString,
+      'testDouble': testDouble,
+      'testInt': testInt,
+      'testBool': testBool,
+      'testStringList': testStringList,
     };
 
     setMap = {
-      'test': (String? value) => test = value,
+      'testString': (String? value) => testString = value,
+      'testDouble': (double? value) => testDouble = value,
+      'testInt': (int? value) => testInt = value,
+      'testBool': (bool? value) => testBool = value,
+      'testStringList': (List<String>? value) => testStringList = value,
     };
   }
 

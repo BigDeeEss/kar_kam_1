@@ -11,6 +11,11 @@ mixin AppDataManagerMixin on AppData {
     required String string,
     var value,
   }) {
+    if (value == null) {
+      throw ArgumentError.notNull('AppDataManagerMixin, update, value '
+          'must not be null.');
+    }
+
     // Set [AppData.field] identified by string to value.
     setMap?[string]?.call(value);
 
@@ -21,15 +26,28 @@ mixin AppDataManagerMixin on AppData {
     }
   }
 
-  /// Sets [AppData] field values to defaults if null.
-  ///
-  /// [force] overrides existing values.
-  // @override
+  /// Sets [AppData] field values to defaults.
   void setDefaults() {
-    // Set test.
+    // [AppData.test].
     update(
-      string: 'test',
-      value: 'test default value.',
+      string: 'testString',
+      value: 'testString default value again!',
+    );
+    update(
+      string: 'testDouble',
+      value: 1.2345,
+    );
+    update(
+      string: 'testInt',
+      value: 12345,
+    );
+    update(
+      string: 'testBool',
+      value: true,
+    );
+    update(
+      string: 'testStringList',
+      value: ['testString', 'default', 'value', 'again!'],
     );
   }
 }
