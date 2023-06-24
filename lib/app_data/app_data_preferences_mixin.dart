@@ -37,7 +37,7 @@ mixin AppDataPreferencesMixin on AppData {
   /// Gets all user preferences from file.
   Future<void> getPrefs() async {
     // Get an instance of [SharedPreferences] for retrieving stored data.
-    var userPrefs = await SharedPreferences.getInstance();
+    final SharedPreferences userPrefs = await SharedPreferences.getInstance();
 
     // Load data using [getPref] and providing [userPrefs] for speed.
     getPref('testString', userPrefs);
